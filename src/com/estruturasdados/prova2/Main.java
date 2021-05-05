@@ -2,6 +2,8 @@ package com.estruturasdados.prova2;
 
 import java.util.Scanner;
 
+import com.estruturasdados.prova2.arvoreavl.ArvoreAVL;
+
 public class Main {
 	/*
 	 * Questão 1: Main.java = line x - y | Queue.java = x1 - y1 Questão 2: Main.java
@@ -46,6 +48,9 @@ public class Main {
 		}
 		//End question 3
 		System.out.println("\n\n\n");
+
+		// Questao 5 - Inicio
+
 		Arvore minhaArvore = new Arvore();
 		// Arvore cuja os nos 50 e 70 estao desbalanceados
 		minhaArvore.adicionar(20);			
@@ -64,8 +69,34 @@ public class Main {
 			System.out.println("A arvore e uma AVL");
 		else
 			System.out.println("A arvore NAO e uma AVL");
+		
+		// Questao 5 - Fim
+		System.out.println("\n\n\n");
 
-	}
+
+		// Questao 6 - Inicio
+		ArvoreAVL minhaArvoreAVL = new ArvoreAVL();
+		minhaArvoreAVL.adicionar(10);
+		minhaArvoreAVL.adicionar(6);
+		minhaArvoreAVL.adicionar(4);
+
+		// Imprimindo a arvore AVL resultante em pre-ordem
+		minhaArvoreAVL.preOrdem();
+
+		// Imprimindo a quantidade total de cada tipo de rotacao feita durante
+		// o balanceamento apos cada insercao
+		System.out.println();
+		System.out.println(minhaArvoreAVL.qtdRotacaoDireita + " rotacoes a direita");
+		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerda + " rotacoes a esquerda");
+		System.out.println(minhaArvoreAVL.qtdRotacaoDireitaEsquerda + " rotacoes direita-esquerda");
+		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerdaDireita + " rotacoes esquerda-direta");
+
+		// Questao 6 - Fim
+		System.out.println("\n\n\n");
+
+
+	}// Fim de main
+
 	
 	public static void quickSort(int[] dataset, int i, int j) {
 		if (i < j) {
