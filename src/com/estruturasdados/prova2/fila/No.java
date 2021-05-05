@@ -1,20 +1,20 @@
 package com.estruturasdados.prova2.fila;
-import com.estruturasdados.prova2.arvoreavl.NoArvore;
+import com.estruturasdados.prova2.Elemento;
 
 public class No {
-    private NoArvore data;
+    private Elemento data;
     private No proximo;
 
-    public No(NoArvore data) {
+    public No(Elemento data) {
         this.data = data;
         this.proximo = null;
     }
 
-    public void setData(NoArvore data) {
+    public void setData(Elemento data) {
         this.data = data;
     }
 
-    public NoArvore getData() {
+    public Elemento getData() {
         return this.data;
     }
 
@@ -27,6 +27,6 @@ public class No {
     }
 
     public void mostrarNo() {
-        System.out.println("{" + this.data.getData() +"}");
+        System.out.println("{" + this.data.getValor() +"}");
     }
 }

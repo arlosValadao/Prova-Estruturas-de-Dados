@@ -1,5 +1,5 @@
 package com.estruturasdados.prova2.fila;
-import com.estruturasdados.prova2.arvoreavl.NoArvore;
+import com.estruturasdados.prova2.Elemento;
 
 public class Fila {
     private ListaEncadeada myFila;
@@ -8,7 +8,7 @@ public class Fila {
         myFila = new ListaEncadeada();
     }
 
-    public void inserir(NoArvore data) {
+    public void inserir(Elemento data) {
         this.myFila.inserirFinal(data);
     }
 

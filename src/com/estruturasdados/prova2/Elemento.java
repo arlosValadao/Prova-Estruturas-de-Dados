@@ -1,7 +1,9 @@
 package com.estruturasdados.prova2;
 
+
 public class Elemento {
 	private int valor;
+	private Elemento pai;
 	private Elemento esquerda;
 	private Elemento direita;
 	
@@ -9,6 +11,15 @@ public class Elemento {
 		this.valor = novoValor;
 		this.esquerda = null;
 		this.direita = null;
+	}
+
+
+	public Elemento getPai() {
+		return pai;
+	}
+
+	public void setPai(Elemento pai) {
+		this.pai = pai;
 	}
 
 	public int getValor() {
