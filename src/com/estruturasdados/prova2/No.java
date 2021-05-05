@@ -8,6 +8,10 @@ public class No {
 		this.data = data;
 	}
 	
+	public No() {
+		this.data = null;
+	}
+	
 	public void setProximo(No proximo) {
 		this.proximo = proximo;
 	}

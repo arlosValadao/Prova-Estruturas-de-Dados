@@ -1,5 +1,6 @@
 package com.estruturasdados.prova2;
 
+
 public class Arvore {
 	private Elemento raiz;
 
@@ -58,6 +59,17 @@ public class Arvore {
 			System.out.println(atual.getValor());
 			emOrdemP(atual.getDireita());
 		}
+
+	}
+	
+	public Queue preOrdem(Elemento atual, Queue queue) {
+		if (atual != null) {
+			System.out.println(atual.getValor());
+			queue.add(atual.getValor());
+			preOrdem(atual.getEsquerda(), queue);
+			preOrdem(atual.getDireita(), queue);
+		}
+		return queue;
 
 	}
 }

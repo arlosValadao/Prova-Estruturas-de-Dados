@@ -17,19 +17,59 @@ public class Main {
 		int size = scanner.nextInt();
 		Queue fila = new Queue(size);
 		fila.add_random();
-		add_tree(fila);
-
-	}
-
-	public static void add_tree(Queue queue) {
-		// Instancia um objeto da classe arvore
+		
 		Arvore tree = new Arvore();
-		// Enquanto o primeiro elemento da fila não for vazio
-		// um elemento da fila será removido e adicionado na árvore
-		while (queue.peek() != null) {
-			tree.adicionar((int) queue.remove());
+		while (fila.peek() != null) {
+			tree.adicionar((int) fila.remove());
 		}
+		
 		System.out.println("-- Percurso em ordem -- \n");
 		tree.emOrdemP(tree.getRaiz());
+		
+		
+		
+		int vetorq3[] = new int[size];
+		Queue queue = new Queue(size);
+		queue = tree.preOrdem(tree.getRaiz(), queue);
+		for(int i=0;i<size;i++) {
+			vetorq3[i] = (int) queue.remove();
+		}
+		
+		quickSort(vetorq3, 0, size-1);
+		
+		System.out.println("Vetor q 3:");
+		for(int i=0;i<size;i++) {
+			System.out.println(vetorq3[i]);
+		}
+
 	}
+	
+	public static void quickSort(int[] dataset, int i, int j) {
+		if (i < j) {
+			int l = i;
+			int p = j;
+			int r = j - 1;
+			while (l <= r) {
+				while (l <= r && dataset[l] < dataset[p])
+					l++;
+				while (l <= r && dataset[r] > dataset[p])
+					r--;
+				if (l <= r) {
+					swap(dataset, l, r);
+					l++;
+					r--;
+				}
+			}
+			swap(dataset, l, p);
+			quickSort(dataset, i, l - 1);
+			quickSort(dataset, l + 1, j);
+		}
+	}
+	
+	private static void swap(int[] vetor, int x, int y) {
+		int aux = vetor[x];
+		vetor[x] = vetor[y];
+		vetor[y] = aux;
+	}
+	
 }
