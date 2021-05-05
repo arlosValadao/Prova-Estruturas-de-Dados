@@ -64,7 +64,7 @@ public class Arvore {
 	
 	public Queue preOrdem(Elemento atual, Queue queue) {
 		if (atual != null) {
-			System.out.println(atual.getValor());
+			//System.out.println(atual.getValor());
 			queue.add(atual.getValor());
 			preOrdem(atual.getEsquerda(), queue);
 			preOrdem(atual.getDireita(), queue);
@@ -72,4 +72,15 @@ public class Arvore {
 		return queue;
 
 	}
+	
+	public int getAltura(Elemento atual) {
+        if(atual==null) {
+            return-1;
+        }
+        else {
+            return 1 + Math.max(getAltura(atual.getEsquerda()),getAltura(atual.getDireita()));
+        }
+    }
+	
+	
 }
