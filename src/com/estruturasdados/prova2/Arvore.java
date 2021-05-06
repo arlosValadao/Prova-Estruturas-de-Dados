@@ -99,6 +99,8 @@ public class Arvore {
                         substituto.setEsquerda(atual.getEsquerda());
                     } else {
                         atual.getPai().setDireita(substituto);
+                        substituto.setPai(atual.getPai());
+                        substituto.setEsquerda(atual.getEsquerda());
                     }
                 } else {
                     this.raiz = substituto;
