@@ -5,52 +5,89 @@ import java.util.Scanner;
 import com.estruturasdados.prova2.arvoreavl.ArvoreAVL;
 
 public class Main {
-	/*
-	 * Questão 1: Main.java = line x - y | Queue.java = x1 - y1 Questão 2: Main.java
-	 * = line x2 - y2
-	 * 
-	 */
 
 	public static void main(String[] args) {
 
-		Scanner scanner = new Scanner(System.in);
+		Scanner entrada = new Scanner(System.in);
 
-		//Beginning question 1
+		/*
+			Questao 1 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 1 - INICIO");
 		System.out.print("Tamanho da fila: ");
-		int size = scanner.nextInt();
+		int size = entrada.nextInt();
+		while(size > 20 || size < 8) {
+			System.out.println("A fila deve ter um tamanho entre 8 e 20, inclusos!");
+			System.out.print("Tamanho da fila: ");
+			size = entrada.nextInt();
+		}
 		Queue fila = new Queue(size);
 		fila.add_random();
-		//End question 1
+		System.out.println("\t\t\t QUESTAO 1 - FIM\n\n\n");
+		/*
+			Questao 1 - fim
+		*/
 		
-		//Beginning question 2
+
+		
+		/*
+			Questao 2 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 2 - INICIO");
 		Arvore tree = new Arvore();
+		//Adicionando os elementos da fila na arvore
 		while (fila.peek() != null) {
 			tree.adicionar((int) fila.remove());
 		}
-		
+
+		// Imprimindo a arvore em ordem
 		System.out.println("-- Percurso em ordem -- \n");
 		tree.emOrdemP(tree.getRaiz());
-		//End question 2
+		System.out.println("\t\t\t QUESTAO 2 - FIM\n\n\n");
+		/*
+			Questao 2 - fim
+		*/
 		
-		//Beginning question 3
-		int vetorq3[] = new int[size];
+
+
+		/*
+			Questao 3 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 3 - INICIO");
+		int vetorQuestao3[] = new int[size];
 		Queue queue = new Queue(size);
 		queue = tree.preOrdem(tree.getRaiz(), queue);
 		for(int i=0;i<size;i++) {
-			vetorq3[i] = (int) queue.remove();
+			vetorQuestao3[i] = (int) queue.remove();
 		}
-		
-		quickSort(vetorq3, 0, size-1);
-		
-		System.out.println("Vetor q 3 ordenado:");
-		for(int i=0;i<size;i++) {
-			System.out.println(vetorq3[i]);
+
+		//Imprimindo vetorQuestao3 desordenado
+		System.out.println("vetorQuestao3 desordenado:");
+		System.out.println();
+		for(int i=0; i < vetorQuestao3.length; i++) {
+			System.out.println(vetorQuestao3[i]);
 		}
-		//End question 3
-		System.out.println("\n\n\n");
+
+		//Ordenando o vetor com o quick sort
+		quickSort(vetorQuestao3, 0, size-1);
+
+		//Imprimindo o vetorQuestao3 ordenado
+		System.out.println("vetorQuestao3 ordenado:");
+		for(int i=0; i < vetorQuestao3.length; i++) {
+			System.out.println(vetorQuestao3[i]);
+		}
+
+		System.out.println("\t\t\t QUESTAO 3 - FIM\n\n\n");
+		/*
+			Questao 3 - fim
+		*/
 
 
-		// Questao 4 - Inicio
+
+		/*
+			Questao 4 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 4 - INICIO");
 		Arvore arvorE = new Arvore();
 		arvorE.adicionar(10);
 		arvorE.adicionar(3);
@@ -60,14 +97,22 @@ public class Main {
 		arvorE.adicionar(15);
 		System.out.println("Multiplos de 3:");
 		arvorE.removerMultiplosDe3();
+
+		//Imprimindo a árvore em ordem, apos as remocoes
 		System.out.println("Arvore no percurso em ordem após remover os multiplos de 3:");
-		arvorE.emOrdemP(arvorE.getRaiz());
+		arvorE.percusoEmOrdem(arvorE.getRaiz());
 
-		// Questao 4 - Fim
-		System.out.println("\n\n\n");
+		System.out.println("\t\t\t QUESTAO 4 - FIM\n\n\n");
+		/*
+			Questao 4 - fim
+		*/
 
-		// Questao 5 - Inicio
+		
 
+		/*
+			Questao 5 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 5 - INICIO");
 		Arvore minhaArvore = new Arvore();
 		// Arvore cuja os nos 50 e 70 estao desbalanceados
 		minhaArvore.adicionar(20);			
@@ -87,30 +132,53 @@ public class Main {
 		else
 			System.out.println("A arvore NAO e uma AVL");
 		
-		// Questao 5 - Fim
-		System.out.println("\n\n\n");
+			System.out.println("\t\t\t QUESTAO 5 - FIM\n\n\n");
+		/*
+			Questao 5 - fim
+		*/
 
 
-		// Questao 6 - Inicio
+
+		/*
+			Questao 6 - inicio
+		*/
+		System.out.println("\t\t\t QUESTAO 6 - INICIO");
+		//Imprimindo a arvore em pre ordem
+		System.out.println("Arvore NAO AVL em pre ordem:");
+		tree.percusoPreOrdem(tree.getRaiz());
+
+		//Adicionando os elementos em pre ordem num vetor
+		int vetorQuestao6[] = new int[size];
+		Queue queueQuestao6 = new Queue(size);
+
+		//Transferindo o conteudo da arvore para a fila queueQuestao6
+		queueQuestao6 = tree.preOrdem(tree.getRaiz(), queueQuestao6);
+		//Transferindo o conteudo da fila para o vetor vetorQuestao6
+		for(int i=0;i<size;i++) {
+			vetorQuestao6[i] = (int) queueQuestao6.remove();
+		}
+
+		//Adicionando os elementos do vetor na arvore AVL
 		ArvoreAVL minhaArvoreAVL = new ArvoreAVL();
-		minhaArvoreAVL.adicionar(10);
-		minhaArvoreAVL.adicionar(6);
-		minhaArvoreAVL.adicionar(4);
+		for(int i = 0; i < vetorQuestao6.length; i++)
+			minhaArvoreAVL.adicionar(vetorQuestao6[i]);
 
-		// Imprimindo a arvore AVL resultante em pre-ordem
-		System.out.println("Arvore AVL em pré ordem:");
-		minhaArvoreAVL.preOrdem();
+		// Imprimindo a arvore AVL resultante em pre ordem
+		System.out.println("Arvore AVL em pre ordem:");
+		minhaArvoreAVL.percursoPreOrdem();
 
 		// Imprimindo a quantidade total de cada tipo de rotacao feita durante
 		// o balanceamento apos cada insercao
-		System.out.println();
-		System.out.println(minhaArvoreAVL.qtdRotacaoDireita + " rotacoes a direita");
-		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerda + " rotacoes a esquerda");
-		System.out.println(minhaArvoreAVL.qtdRotacaoDireitaEsquerda + " rotacoes direita-esquerda");
-		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerdaDireita + " rotacoes esquerda-direta");
+		System.out.println("Quantidade de rotacoes realizadas");
+		System.out.println(minhaArvoreAVL.qtdRotacaoDireita + " a direita");
+		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerda + " a esquerda");
+		System.out.println(minhaArvoreAVL.qtdRotacaoDireitaEsquerda + " direita-esquerda");
+		System.out.println(minhaArvoreAVL.qtdRotacaoEsquerdaDireita + " esquerda-direta");
 
-		// Questao 6 - Fim
-		System.out.println("\n\n\n");
+		System.out.println("\t\t\t QUESTAO 6 - FIM\n\n\n");
+		/*
+			Questao 6 - fim
+		*/
 
 
 	}// Fim de main
@@ -145,33 +213,33 @@ public class Main {
 	}
 	
 	// Calcula altura de um determinado no
-		private static int getAltura(Elemento atual) {
-	        if(atual==null) {
-	            return-1;
-	        }
-	        else {
-	            return 1 + Math.max(getAltura(atual.getEsquerda()),getAltura(atual.getDireita()));
-	        }
-	    }
+	private static int getAltura(Elemento atual) {
+		if(atual==null) {
+			return-1;
+		}
+		else {
+			return 1 + Math.max(getAltura(atual.getEsquerda()),getAltura(atual.getDireita()));
+		}
+	}
 	
 	// Retorna tre caso a arvore atendas os requisitos de uma arvore AVL
-		// e imprime na tela os nos desbalanceados e retorna false caso contrário.
-		public static boolean isAVL(Elemento atual) {
-	        if(atual != null) {
-				// Calculando o fator de balanceamento
-	            int FB = getAltura(atual.getEsquerda()) - getAltura(atual.getDireita());
-				// Caso o fator de balanceamento(FB) esteja entre -1 e 1, inclusos
-	            if(FB >= -1 && FB <= 1) {
-	                return true && isAVL(atual.getEsquerda()) && isAVL(atual.getDireita());
-	            }
-				// Caso o fator de balanceamento não esteja entre -1 e 1, inclusos
-	            else {
-					System.out.println("O no" + " { " + atual.getValor() + " } " + "esta desbalanceado");
-	                return isAVL(atual.getEsquerda()) && isAVL(atual.getDireita()) && false;
-				}
-	        }
-	        return true;
-	    }
+	// e imprime na tela os nos desbalanceados e retorna false caso contrário.
+	public static boolean isAVL(Elemento atual) {
+		if(atual != null) {
+			// Calculando o fator de balanceamento
+			int FB = getAltura(atual.getEsquerda()) - getAltura(atual.getDireita());
+			// Caso o fator de balanceamento(FB) esteja entre -1 e 1, inclusos
+			if(FB >= -1 && FB <= 1) {
+				return true && isAVL(atual.getEsquerda()) && isAVL(atual.getDireita());
+			}
+			// Caso o fator de balanceamento não esteja entre -1 e 1, inclusos
+			else {
+				System.out.println("O no" + " { " + atual.getValor() + " } " + "esta desbalanceado");
+				return isAVL(atual.getEsquerda()) && isAVL(atual.getDireita()) && false;
+			}
+		}
+		return true;
+	}
 
 	
 }// Fim da classe Main

@@ -182,4 +182,20 @@ public class Arvore {
             }
         }
     }
+
+    public void percusoEmOrdem(Elemento atual) {
+        if (atual != null) {
+            percusoEmOrdem(atual.getEsquerda());
+            System.out.println(atual.getValor());
+            percusoEmOrdem(atual.getDireita());
+        }
+    }
+
+    public void percusoPreOrdem(Elemento atual) {
+        if (atual != null) {
+            System.out.println(atual.getValor());
+            percusoEmOrdem(atual.getEsquerda());
+            percusoEmOrdem(atual.getDireita());
+        }
+    }
 }

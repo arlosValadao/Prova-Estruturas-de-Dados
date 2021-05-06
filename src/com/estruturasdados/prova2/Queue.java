@@ -8,19 +8,16 @@ public class Queue{
 	
 	//Questão 1
 	public Queue(int size) {
+		this.size = 0;
 		this.MAX_SIZE = size;
 	}
+
+	//Preenche a fila com a quantidade MAX_SIZE
+	//de valores aleatorios
 	public void add_random() {
 		int data = Random.rand(100, 200);
-		for (int i =0; i<this.MAX_SIZE;i++) {
-			if(isEmpty()) {
-				head = tail = new No(data);
-			}else {
-				No temp = tail;
-				tail = new No(data);
-				temp.setProximo(tail);
-			}
-			this.size++;
+		for (int i =0; i < this.MAX_SIZE;i++) {
+			add(data);
 			data = Random.rand(100, 200);
 		}
 		
@@ -29,12 +26,11 @@ public class Queue{
 	public void add(Object data) {
 		if(isEmpty()) {
 			head = tail = new No(data);
-		}else {
+		}else if(size < MAX_SIZE) {
 			No temp = tail;
 			tail = new No(data);
 			temp.setProximo(tail);
 		}
-		this.size++;
 	}
 	
 	public Object remove() {

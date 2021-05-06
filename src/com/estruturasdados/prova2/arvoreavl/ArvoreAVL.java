@@ -28,16 +28,16 @@ public class ArvoreAVL {
         return aux;
     }
 
-    private void preOrdem(NoArvore atual) {
+    private void percursoPreOrdem(NoArvore atual) {
         if(atual != null) {
             System.out.println(atual.getData());
-            preOrdem(atual.getEsquerda());
-            preOrdem(atual.getDireita());
+            percursoPreOrdem(atual.getEsquerda());
+            percursoPreOrdem(atual.getDireita());
         }
     }
 
-    public void preOrdem() {
-        preOrdem(getRaiz());
+    public void percursoPreOrdem() {
+        percursoPreOrdem(getRaiz());
     }
 
     public void adicionar(int data) {
