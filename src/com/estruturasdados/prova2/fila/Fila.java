@@ -1,5 +1,6 @@
 package com.estruturasdados.prova2.fila;
 import com.estruturasdados.prova2.Elemento;
+import com.estruturasdados.prova2.No;
 
 public class Fila {
     private ListaEncadeada myFila;

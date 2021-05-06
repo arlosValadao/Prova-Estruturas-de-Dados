@@ -56,7 +56,11 @@ public class Main {
 		arvorE.adicionar(3);
 		arvorE.adicionar(6);
 		arvorE.adicionar(12);
+		arvorE.adicionar(1);
+		arvorE.adicionar(15);
+		System.out.println("Multiplos de 3:");
 		arvorE.removerMultiplosDe3();
+		System.out.println("Arvore no percurso em ordem após remover os multiplos de 3:");
 		arvorE.emOrdemP(arvorE.getRaiz());
 
 		// Questao 4 - Fim
@@ -94,6 +98,7 @@ public class Main {
 		minhaArvoreAVL.adicionar(4);
 
 		// Imprimindo a arvore AVL resultante em pre-ordem
+		System.out.println("Arvore AVL em pré ordem:");
 		minhaArvoreAVL.preOrdem();
 
 		// Imprimindo a quantidade total de cada tipo de rotacao feita durante

@@ -28,6 +28,10 @@ public class No {
 		return this.data;
 	}
 	
+	public void mostrarNo() {
+        System.out.println("{" + this.getData() +"}");
+    }
+	
 }
 
 

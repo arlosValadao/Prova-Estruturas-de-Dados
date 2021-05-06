@@ -95,6 +95,8 @@ public class Arvore {
                     // realocação do substituto
                     if (atual.getValor() < atual.getPai().getValor()) {
                         atual.getPai().setEsquerda(substituto);
+                        substituto.setPai(atual.getPai());
+                        substituto.setEsquerda(atual.getEsquerda());
                     } else {
                         atual.getPai().setDireita(substituto);
                     }
@@ -107,8 +109,10 @@ public class Arvore {
                     if (atual.getPai() != null) {
                         if (atual.getValor() < atual.getPai().getValor()) {
                             atual.getPai().setEsquerda(atual.getDireita());
+                            atual.getDireita().setPai(atual.getPai());
                         } else {
                             atual.getPai().setDireita(atual.getDireita());
+                            atual.getDireita().setPai(atual.getPai());
                         }
                     } else {
                         this.raiz = atual.getDireita();
@@ -117,8 +121,10 @@ public class Arvore {
                     if (atual.getPai() != null) {
                         if (atual.getValor() < atual.getPai().getValor()) {
                             atual.getPai().setEsquerda(atual.getEsquerda());
+                            atual.getEsquerda().setPai(atual.getPai());
                         } else {
                             atual.getPai().setDireita(atual.getEsquerda());
+                            atual.getEsquerda().setPai(atual.getPai());
                         }
                     } else {
                         this.raiz = atual.getEsquerda();
@@ -151,7 +157,7 @@ public class Arvore {
             substituto.setPai(aux);
         }
         if (substituto != atual.getDireita()) {
-            substituto.getPai().setEsquerda(substituto.getDireita());
+            substituto.getPai().setEsquerda(atual.getEsquerda());
             substituto.setDireita(atual.getDireita());
         }
         return substituto;
@@ -162,7 +168,7 @@ public class Arvore {
             Fila minhaFila = new Fila();
             minhaFila.inserir(getRaiz());
             while(!minhaFila.isEmpty()) {
-                Elemento atual = minhaFila.remover().getData();
+                Elemento atual = (Elemento) minhaFila.remover().getData();
                 if(atual.getDireita() != null)
                     minhaFila.inserir(atual.getDireita());
                 if(atual.getEsquerda() != null)
