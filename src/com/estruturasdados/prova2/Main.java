@@ -49,6 +49,19 @@ public class Main {
 		//End question 3
 		System.out.println("\n\n\n");
 
+
+		// Questao 4 - Inicio
+		Arvore arvorE = new Arvore();
+		arvorE.adicionar(10);
+		arvorE.adicionar(3);
+		arvorE.adicionar(6);
+		arvorE.adicionar(12);
+		arvorE.removerMultiplosDe3();
+		arvorE.emOrdemP(arvorE.getRaiz());
+
+		// Questao 4 - Fim
+		System.out.println("\n\n\n");
+
 		// Questao 5 - Inicio
 
 		Arvore minhaArvore = new Arvore();
@@ -154,5 +167,6 @@ public class Main {
 	        }
 	        return true;
 	    }
+
 	
-}
+}// Fim da classe Main
